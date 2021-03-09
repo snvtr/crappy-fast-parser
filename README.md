@@ -1,1 +1,1 @@
-local file
+sh scripts
