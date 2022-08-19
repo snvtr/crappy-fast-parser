@@ -194,22 +194,16 @@ def parse_data( tpl_id, data, Config ):
 
 def parse_config( file, udp, tcp ):
     ''' loads streams configuration. One stream per script, please '''
-
     DOMTree = xml.dom.minidom.parse(file)
     cfg = DOMTree.documentElement
 
     udp = []
     tcp = []
-
     if cfg.hasAttribute('environment'):
-        print('#'*50,'\nASTS config\n','#'*50)
-
         connections = cfg.getElementsByTagName('connection')
         if connections:
             for connection in connections:
-
                 row = {}
-
                 row['feedName']  = connection.getAttribute('id').strip()
                 row['feedLabel'] = connection.getElementsByTagName('type').item(0).getAttribute('feed-type').strip()
                 row['protocol']  = connection.getElementsByTagName('protocol').item(0).firstChild.nodeValue
@@ -291,20 +285,15 @@ def create_ssm_listener( src, grp, port ):
                  socket.inet_pton(socket.AF_INET, '0.0.0.0') +
                  socket.inet_pton(socket.AF_INET, src))
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
-
     # Buffer size
     s.setsockopt(socket.SOL_SOCKET, socket.SO_RCVBUF, 16777216 )
-
     # SSM option
     s.setsockopt(socket.SOL_IP, socket.IP_ADD_SOURCE_MEMBERSHIP, imr)
-
     # allows reuse address
     s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-
     #allows reuse port (multiple listeners for one groupe simultaneously)
     if hasattr(socket, 'SO_REUSEPORT'):
         s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, 1)
-
     s.bind((grp, int(port)))
     return s
 
