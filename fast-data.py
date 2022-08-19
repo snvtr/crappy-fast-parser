@@ -1,9 +1,9 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-######№###############################
-# FAST Listener + crappy FAST parser #
-######################################
+######№############################################
+# FAST Listener + crappy FAST parser for python 2 #
+###################################################
 
 import os
 import sys
