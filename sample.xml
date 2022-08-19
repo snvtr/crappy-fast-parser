@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<configuration environment="Prod" updated="2017/02/15-09:00:00">
+    <channel id="EQ" label="Market">
+        <connections>
+            <connection id="TrSnap">
+                <type feed-type="Trades Snapshot">S</type>
+                <protocol>UDP/IP</protocol>
+                <feed id="A">
+                    <src-ip>192.168.1.2</src-ip>
+                    <ip>236.147.1.2</ip>
+                    <port>5002</port>
+                </feed>
+                <feed id="B">
+                    <src-ip>192.168.1.130</src-ip>
+                    <ip>236.147.1.130</ip>
+                    <port>5130</port>
+                </feed>
+            </connection>
+        </connections>
+    </channel>
+</configuration>
