@@ -243,7 +243,7 @@ def parse_config( file, udp, tcp ):
 
 def parse_template(xmlfile):
     ''' loads xml and returns a parsed templates config '''
-    DOMTree = xml.dom.minidom.parse('FIX50SP2-2017-Mar.xml')
+    DOMTree = xml.dom.minidom.parse(xmlfile)
     Template = DOMTree.documentElement
     T = {}
     for i in Template.getElementsByTagName('template'):
